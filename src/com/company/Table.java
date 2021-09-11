@@ -5,7 +5,7 @@ import com.github.freva.asciitable.AsciiTable;
 public class Table {
 
   public void GenerateTable(String[] args){
-    String[] headers = new String[args.length+1]; headers[0]=" ";
+    String[] headers = new String[args.length+1]; headers[0]="USER\\PC";
     String[][] data = new String[args.length][args.length+1];
     Winner tabWin =  new Winner();
 

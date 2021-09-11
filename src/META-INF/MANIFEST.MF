@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
 Main-Class: com.company.Main
+Class-Path: fliptables-1.1.0.jar ascii-table-1.2.0.jar
 

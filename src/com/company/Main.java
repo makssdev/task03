@@ -13,16 +13,16 @@ public class Main {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, IOException {
 
-            String userRun = "";
+            String userRun;
             int userRunInt =0;
-            int compRunInt = 0;
+            int compRunInt;
             boolean menuExit =true;
             conditions(args);
             Key key = new Key();
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
             compRunInt = getRandomWord(args);
-            key.GenerateKeyAndHMAC(args[compRunInt]);
+            key.GenerateKeyAndHMAC(args[compRunInt-1]);
             System.out.println("HMAC: "+key.GetHMAC());
 
             do{
@@ -57,7 +57,7 @@ public class Main {
     }
 
     static void conditions(String[] args){
-        if(DuplicateWorld(args) || args.length%2 == 0 && !(args.length >=3)) {
+        if(args.length%2 == 0 || !(args.length >=3) || DuplicateWorld(args)) {
             System.out.println("Error \nExample: java -jar game.jar rock paper scissors lizard Spock");
             System.exit(0);
         }
@@ -71,9 +71,9 @@ public class Main {
     }
 
     static boolean DuplicateWorld(String[] words){
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
         for (String word : words) {
-            if (set.add(word) == false) {
+            if (!set.add(word)) {
                 System.out.println("You have duplicate - "+word);
                 return true;
             } else continue;
